@@ -1,0 +1,23 @@
+{
+  "masking_map_linear": {
+    "k": [1],
+    "lambda": [1],
+    "data": ["OneDimensional"]
+  },
+  "masking_map_linear_subsequence": {
+    "k": [1],
+    "lambda": [2],
+    "sub_length": [10, 30, 50, 70, 90],
+    "data": ["OneDimensional"]
+  },
+  "masking_map_linear_partial": {
+    "k": [1],
+    "lambda": [1],
+    "data": ["OneDimensional"]
+  },
+  "masking_map_non_linear": {
+    "k": [1],
+    "ratio": [0.1],
+    "data": ["OneDimensional"]
+  }
+}

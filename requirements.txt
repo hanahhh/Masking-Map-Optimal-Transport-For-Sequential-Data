@@ -1,0 +1,11 @@
+cython
+numpy
+POT
+scikit-learn
+aeon
+tqdm
+setuptools
+matplotlib
+cvxpy
+seaborn
+torch
