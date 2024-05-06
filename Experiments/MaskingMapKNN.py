@@ -20,7 +20,7 @@ sklearn_seed = 0
 
 
 def main():
-    result_link = "Results/ExperimentMaskingMapLinearSubsequence_1.txt"
+    result_link = "Results/ExperimentMaskingMapLinearSubsequence_2.txt"
     method = "masking_map_linear_subsequence"
     with open("Config/AlgorithmSubsequence_1.json", "r") as file:
         algorithms = json.load(file)
