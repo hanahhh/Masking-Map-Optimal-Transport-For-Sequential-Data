@@ -1,13 +1,4 @@
 {
-  "OneDimensional": [
-    "ItalyPowerDemand",
-    "MoteStrain",
-    "OliveOil",
-    "Plane",
-    "SmoothSubspace",
-    "SonyAIBORobotSurface1",
-    "SonyAIBORobotSurface2",
-    "ToeSegmentation2"
-  ],
+  "OneDimensional": ["BeetleFly", "BirdChicken"],
   "MultiDimensional": ["Arabic"]
 }
