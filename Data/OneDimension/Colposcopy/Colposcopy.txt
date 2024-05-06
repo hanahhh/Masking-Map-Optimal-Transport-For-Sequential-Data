@@ -1,0 +1,29 @@
+task is to classify the nature of diagnosis from a colposcopy.
+
+the time series represent the change in intensity values of a pixel
+region through a sequence of digital colposcopic images obtained
+during the colposcopy test that was performed on each patient
+included in the study.
+
+Original data can be found here
+https://github.com/KarinaGF/ColposcopyData
+
+Original paper: Karina Gutiérrez-Fragoso et al. Optimization of
+Classification Strategies of Acetowhite Temporal Patterns towards
+Improving Diagnostic Performance of Colposcopy. Computational and
+Mathematical Methods in Medicine Volume 2017, Article ID 5989105,
+10 pages https://doi.org/10.1155/2017/5989105
+
+Correspondence should be addressed to Karina Gutiérrez-Fragoso:
+kgutierrez@itesa.edu.mx or kgutierrezf@gmail.com
+
+Instances: 200
+Time series length: 182
+Classes:
+• Value 0 represents “atrophy” and include 15 cases
+• Value 1 represents “inflammation” and include 24 cases
+• Value 2 represents “ectopy” and include 20 cases
+• Value 3 represents “normal” and include 48 cases
+• Value 4 represents “low-grade squamous intraepithelial lesion (LSIL)” and include 37 cases
+• Value 5 represents “high-grade squamous intraepithelial lesion (LSIL)” and include 56 cases
+default train test split created through a random partition.

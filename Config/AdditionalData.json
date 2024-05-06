@@ -1,0 +1,21 @@
+{
+  "OneDimensional": [
+    "BasicMotions",
+    "Colposcopy",
+    "DistalPhalanxOutlineAgeGroup",
+    "ERing",
+    "EyesOpenShut",
+    "FingerMovements",
+    "Epilepsy",
+    "JapaneseVowels",
+    "Libras",
+    "NATOPS",
+    "PowerCons",
+    "RacketSports",
+    "UMD",
+    "Wine",
+    "SyntheticControl",
+    "ProximalPhalanxTW",
+    "TwoLeadECG"
+  ]
+}
