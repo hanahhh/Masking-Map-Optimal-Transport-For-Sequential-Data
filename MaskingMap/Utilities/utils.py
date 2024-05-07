@@ -93,17 +93,29 @@ def subsequences(time_series, k):
     n = time_series.size
     shape = (n - k + 1, k)
     strides = time_series.strides * 2
+    return np.lib.stride_tricks.as_strided(time_series, shape=shape, strides=strides)
 
+
+def subsequenceData(time_series, k):
+    time_series = np.asarray(time_series)
+    n = len(time_series)
+    shape = (n - k + 1, k) + time_series.shape[1:]
+    if time_series.ndim == 1:
+        strides = time_series.strides * 2
+    elif time_series.ndim == 2:
+        strides = time_series.strides[0], time_series.strides[0], time_series.strides[1]
     return np.lib.stride_tricks.as_strided(time_series, shape=shape, strides=strides)
 
 
 def subsequence_2d(matrix_list, k):
-    subsequences = [matrix_list[i : i + k] for i in range(0, len(matrix_list) - k)]
+    subsequences = [matrix_list[i: i + k]
+                    for i in range(0, len(matrix_list) - k)]
     return subsequences
 
 
 def subsequence_2d_without_overlap(matrix_list, k):
-    subsequences = [matrix_list[i : i + k] for i in range(0, len(matrix_list) - k, k)]
+    subsequences = [matrix_list[i: i + k]
+                    for i in range(0, len(matrix_list) - k, k)]
     return subsequences
 
 

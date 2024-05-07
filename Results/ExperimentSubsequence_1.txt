@@ -1,1 +1,0 @@
-BasicMotions(1) DistalPhalanxOutlineAgeGroup(1) DistalPhalanxOutlineAgeGroup(1) ERing(1) Colposcopy(1) EyesOpenShut(1) FingerMovements(1) Epilepsy(1) JapaneseVowels(1) Libras(1) NATOPS(1) PowerCons(1) RacketSports(1) UMD(1) Wine(1) SyntheticControl(1) ProximalPhalanxTW(1) TwoLeadECG(1) Wine(1) 

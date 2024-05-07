@@ -13,6 +13,7 @@ from MaskingMap.Utilities.utils import (
     cost_matrix_1d,
     create_mask,
     subsequences,
+    subsequenceData,
     subsequence_2d,
     cost_matrix_2d,
     create_mask_DT,
@@ -76,7 +77,8 @@ def masking_map_linear(
     elif algorithm == "sinkhorn":
         pi = sinkhorn_log_domain(p, q, C, M, reg, max_iterations, thres)
     else:
-        raise ValueError("algorithm must be 'linear_programming' or 'sinkhorn'!")
+        raise ValueError(
+            "algorithm must be 'linear_programming' or 'sinkhorn'!")
 
     cost = np.sum(pi * C)
     # cost = np.exp(-gamma * cost)
@@ -110,7 +112,38 @@ def masking_map_linear_sub_sequence(
     elif algorithm == "sinkhorn":
         pi = sinkhorn_log_domain(p, q, C, M, reg, max_iterations, thres)
     else:
-        raise ValueError("algorithm must be 'linear_programming' or 'sinkhorn'!")
+        raise ValueError(
+            "algorithm must be 'linear_programming' or 'sinkhorn'!")
+    cost = np.sum(pi * C)
+    return cost
+
+
+def masking_map_linear_sub_sequence_multivariate(
+    xs,
+    xt,
+    ratio=0.1,
+    sub_ratio=0.1,
+    eps=1e-10,
+    reg=0.0001,
+    max_iterations=100000,
+    thres=1e-5,
+    algorithm="linear_programming",
+):
+    sub_length = int(np.floor(min(len(xs), len(xt)) * sub_ratio))
+    subs_xs = subsequenceData(xs, sub_length)
+    subs_xt = subsequenceData(xt, sub_length)
+    p = np.ones(len(subs_xs)) / len(subs_xs)
+    q = np.ones(len(subs_xt)) / len(subs_xt)
+    C = cost_matrix_aw(subs_xs, subs_xt)
+    C /= C.max() + eps
+    M = create_mask(C, ratio)
+    if algorithm == "linear_programming":
+        pi = lp(p, q, C, M)
+    elif algorithm == "sinkhorn":
+        pi = sinkhorn_log_domain(p, q, C, M, reg, max_iterations, thres)
+    else:
+        raise ValueError(
+            "algorithm must be 'linear_programming' or 'sinkhorn'!")
     cost = np.sum(pi * C)
     return cost
 
@@ -165,7 +198,8 @@ def masking_map_linear_sequence(
     elif algorithm == "sinkhorn":
         pi = sinkhorn_log_domain(p, q, C, M, reg, max_iterations, thres)
     else:
-        raise ValueError("algorithm must be 'linear_programming' or 'sinkhorn'!")
+        raise ValueError(
+            "algorithm must be 'linear_programming' or 'sinkhorn'!")
     cost = np.sum(pi * C)
     # cost = np.exp(-gamma * cost)
     if plot:
