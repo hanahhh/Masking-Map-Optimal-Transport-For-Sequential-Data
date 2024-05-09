@@ -7,11 +7,39 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+def checkEven(x, y):
+    rows_diff = x.shape[0] - y.shape[0]
+    columns_diff = x.shape[1] - y.shape[1]
+    if rows_diff > 0:
+        zero_rows = np.zeros((rows_diff, y.shape[1]))
+        y = np.vstack((y, zero_rows))
+    elif rows_diff < 0:
+        zero_rows = np.zeros((-rows_diff, x.shape[1]))
+        x = np.vstack((x, zero_rows))
+    if columns_diff > 0:
+        zero_columns = np.zeros((y.shape[0], columns_diff))
+        y = np.hstack((y, zero_columns))
+    elif columns_diff < 0:
+        zero_columns = np.zeros((x.shape[0], -columns_diff))
+        x = np.hstack((x, zero_columns))
+    return x, y
+
+
 def cost_matrix_aw(x, y):
-    x = np.array(x).reshape(np.array(x).shape[0], -1)
-    y = np.array(y).reshape(np.array(y).shape[0], -1)
-    C = ot.dist(x, y, metric="euclidean", p=2)
-    return C
+    if x.shape != y.shape:
+        m = len(x)
+        n = len(y)
+        C = np.zeros((m, n))
+        for row in range(m):
+            for col in range(n):
+                a, b = checkEven(x[row], y[col])
+                C[row, col] = np.linalg.norm(a - b)
+        return C
+    else:
+        x = np.array(x).reshape(np.array(x).shape[0], -1)
+        y = np.array(y).reshape(np.array(y).shape[0], -1)
+        C = ot.dist(x, y, metric="euclidean", p=2)
+        return C
 
 
 def draw_matrix_aw(M, type="seaborn"):
@@ -135,7 +163,8 @@ def cost_matrix_2d(x, y):
     Cxy = np.zeros((m, n))
     for row in range(m):
         for col in range(n):
-            Cxy[row, col] = np.linalg.norm(x[row] - y[col])
+            a, b = checkEven(x[row], y[col])
+            Cxy[row, col] = np.linalg.norm(a - b)
     return Cxy
 
 
