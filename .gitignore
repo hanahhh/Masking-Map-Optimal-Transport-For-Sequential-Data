@@ -161,11 +161,11 @@ cython_debug/
 #.idea/
 
 Datasets/COIN/lmdb
-Datasets/wei
+# Datasets/wei
 Datasets/UCR
 **/test.ipynb
 Datasets/wei_dataset_feature
 Datasets/arabic
 Datasets/COIN
-data
+# data
 ot_dis.egg-info

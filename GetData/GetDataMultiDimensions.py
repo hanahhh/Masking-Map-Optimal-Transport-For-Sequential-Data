@@ -1,4 +1,6 @@
 import numpy as np
+import joblib
+import sys
 import os
 
 NUM_MFCC = 13
@@ -9,19 +11,12 @@ TEST_FILE = os.path.join('../data/UCR/raw_data/arabic/Test_Arabic_Digit.txt')
 
 
 def load_data(filepath, coeffs=ALL_COEFFS):
-    """
-    :param filepath: Path for the file to read, either the TRAIN_FILE or TEST_FILE
-    :return:
-    Organizes the data in the input file into a list of matrices. Each matrix is the data for a spoken digit,
-     where the columns are the coefficients and each row is the index of the time window
-    """
     mask = convert_list_to_mask(coeffs)
 
     digits = []
     labels = []
     current_digit = []
     with open(filepath, 'r') as f:
-        # For each block, append the items into one long list and then reshape to be (-1, 13) and append to digits
         for idx, line in enumerate(f):
             if idx == 0:
                 continue
@@ -78,3 +73,25 @@ if __name__ == "__main__":
     coeffs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     test_digits, test_labels = get_test_data()
     assert (len(test_digits[0][0]) == len(coeffs))
+
+
+def getDataMultiVariate(dataset):
+    if dataset in ["Weizmann"]:
+        directory = f"Data/MultiDimensions/{dataset}/binary"
+        X = []
+        y = np.empty(80, dtype='<U9')
+        index = 0
+        for filename in os.listdir(directory):
+            f = os.path.join(directory, filename)
+            if os.path.isfile(f):
+                X.append(joblib.load(f))
+                y[index] = filename.split('_')[1]
+                index = index + 1
+        return X[0:40], y[0:40], X[40:80], y[40:80]
+    else:
+        folder_path = f"Data/MultiDimensions/{dataset}/"
+        X_train = joblib.load(os.path.join(folder_path, "X_train.pkl"))
+        y_train = joblib.load(os.path.join(folder_path, "X_test.pkl"))
+        X_test = joblib.load(os.path.join(folder_path, "y_train.pkl"))
+        y_test = joblib.load(os.path.join(folder_path, "y_test.pkl"))
+        return X_train, X_test, y_train, y_test
