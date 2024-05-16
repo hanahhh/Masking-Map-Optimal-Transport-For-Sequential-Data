@@ -1,6 +1,7 @@
 import numpy as np
 import joblib
 import sys
+from pathlib import Path
 import os
 
 NUM_MFCC = 13
@@ -75,23 +76,10 @@ if __name__ == "__main__":
     assert (len(test_digits[0][0]) == len(coeffs))
 
 
-def getDataMultiVariate(dataset):
-    if dataset in ["Weizmann"]:
-        directory = f"Data/MultiDimensions/{dataset}/binary"
-        X = []
-        y = np.empty(80, dtype='<U9')
-        index = 0
-        for filename in os.listdir(directory):
-            f = os.path.join(directory, filename)
-            if os.path.isfile(f):
-                X.append(joblib.load(f))
-                y[index] = filename.split('_')[1]
-                index = index + 1
-        return X[0:40], y[0:40], X[40:80], y[40:80]
-    else:
-        folder_path = f"Data/MultiDimensions/{dataset}/"
-        X_train = joblib.load(os.path.join(folder_path, "X_train.pkl"))
-        y_train = joblib.load(os.path.join(folder_path, "X_test.pkl"))
-        X_test = joblib.load(os.path.join(folder_path, "y_train.pkl"))
-        y_test = joblib.load(os.path.join(folder_path, "y_test.pkl"))
-        return X_train, X_test, y_train, y_test
+def getDataMultiVariate(dataset, data_path=f"Data/MultiDimensions/"):
+    dir_name = os.path.dirname(data_path)
+    X_train = joblib.load(os.path.join(dir_name, f"{dataset}/X_train.pkl"))
+    y_train = joblib.load(os.path.join(dir_name, f"{dataset}/y_train.pkl"))
+    X_test = joblib.load(os.path.join(dir_name, f"{dataset}/X_test.pkl"))
+    y_test = joblib.load(os.path.join(dir_name, f"{dataset}/y_test.pkl"))
+    return X_train, X_test, y_train, y_test
