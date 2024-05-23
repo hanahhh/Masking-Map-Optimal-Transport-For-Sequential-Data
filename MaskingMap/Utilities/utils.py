@@ -25,16 +25,22 @@ def checkEven(x, y):
     return x, y
 
 
-def cost_matrix_aw(x, y):
-    if x.shape != y.shape:
-        m = len(x)
-        n = len(y)
-        C = np.zeros((m, n))
-        for row in range(m):
-            for col in range(n):
-                a, b = checkEven(x[row], y[col])
-                C[row, col] = np.linalg.norm(a - b)
-        return C
+def cost_matrix_aw(x, y, subsequence=True):
+    if subsequence == True:
+        if x.shape != y.shape:
+            m = len(x)
+            n = len(y)
+            C = np.zeros((m, n))
+            for row in range(m):
+                for col in range(n):
+                    a, b = checkEven(x[row], y[col])
+                    C[row, col] = np.linalg.norm(a - b)
+            return C
+        else:
+            x = np.array(x).reshape(np.array(x).shape[0], -1)
+            y = np.array(y).reshape(np.array(y).shape[0], -1)
+            C = ot.dist(x, y, metric="euclidean", p=2)
+            return C
     else:
         x = np.array(x).reshape(np.array(x).shape[0], -1)
         y = np.array(y).reshape(np.array(y).shape[0], -1)

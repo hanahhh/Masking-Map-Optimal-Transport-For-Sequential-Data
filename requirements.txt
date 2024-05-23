@@ -10,3 +10,4 @@ cvxpy
 seaborn
 torch
 pathlib
+wtk

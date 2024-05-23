@@ -57,17 +57,10 @@ def masking_map_linear(
     -------
         cost: Transportation cost
     """
+    C = cost_matrix_aw(xs, xt, subsequence=False)
+    C /= C.max() + eps
     p = np.ones(len(xs)) / len(xs)
     q = np.ones(len(xt)) / len(xt)
-
-    if xs.ndim == 1:
-        C = cost_matrix_1d(xs, xt)
-    elif xs.ndim == 2:
-        C = cost_matrix(xs, xt)
-    else:
-        raise ValueError("The data must in the form of 1d or 2d array")
-    C /= C.max() + eps
-
     # mask matrix
     M = create_mask(C, ratio)
 
