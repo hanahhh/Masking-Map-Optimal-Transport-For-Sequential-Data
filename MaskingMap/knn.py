@@ -33,7 +33,7 @@ def knn_masking_map_linear(X_train, X_test, y_train, y_test, ratio=0.1, k=1):
             distance = masking_map_linear(
                 X_train[train_idx], X_test[test_idx], ratio=ratio
             )
-            result[test_idx, train_idx] = distance
+            result[test_idx, train_idx] = np.abs(distance)
 
     y_pred = knn_classifier_from_distance_matrix(
         distance_matrix=result,
@@ -170,7 +170,7 @@ def knn_masking_map_non_linear(X_train, X_test, y_train, y_test, ratio=0.1, k=1)
     for train_idx in tqdm(range(train_size)):
         for test_idx in tqdm(range(test_size), leave=False):
             distance = masking_map_non_linear(
-                X_train[train_idx], X_test[test_idx], ratio=ratio
+                np.array(X_train[train_idx]), np.array(X_test[test_idx]), ratio=ratio
             )
             result[test_idx, train_idx] = distance
 

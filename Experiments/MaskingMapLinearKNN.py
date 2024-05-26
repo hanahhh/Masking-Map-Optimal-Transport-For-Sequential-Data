@@ -41,33 +41,33 @@ def main(args):
         for k in algorithms[method]["k"]:
             with open(args.result_path, "a") as file:
                 file.write(f"{data_set}({k}) ")
-                for ratio in algorithms[method]["ratio"]:
-                    accuracy = knn_masking_map_linear(
-                        X_train=X_train,
-                        X_test=X_test,
-                        y_train=y_train,
-                        y_test=y_test,
-                        k=k,
-                        ratio=ratio,
-                    )
-                    if accuracy > best_accuracy:
-                        best_accuracy = accuracy
-                    with open(
-                        args.result_path,
-                        "a",
-                    ) as file:
-                        if (
-                            ratio
-                            == algorithms[method]["ratio"][
-                                len(algorithms[method]["ratio"]) - 1
-                            ]
-                        ):
-                            file.write(
-                                f"&({ratio}) {round(accuracy, 2)}\\\ \n"
-                            )
-                        else:
-                            file.write(
-                                f"&({ratio}) {round(accuracy, 2)} ")
+            for ratio in algorithms[method]["ratio"]:
+                accuracy = knn_masking_map_linear(
+                    X_train=X_train,
+                    X_test=X_test,
+                    y_train=y_train,
+                    y_test=y_test,
+                    k=k,
+                    ratio=ratio,
+                )
+                if accuracy > best_accuracy:
+                    best_accuracy = accuracy
+                with open(
+                    args.result_path,
+                    "a",
+                ) as file:
+                    if (
+                        ratio
+                        == algorithms[method]["ratio"][
+                            len(algorithms[method]["ratio"]) - 1
+                        ]
+                    ):
+                        file.write(
+                            f"&({ratio}) {round(accuracy, 2)}\\\ \n"
+                        )
+                    else:
+                        file.write(
+                            f"&({ratio}) {round(accuracy, 2)} ")
         with open(args.result_path, "a") as file:
             file.write(f"{data_set} best result: {best_accuracy} \n")
 

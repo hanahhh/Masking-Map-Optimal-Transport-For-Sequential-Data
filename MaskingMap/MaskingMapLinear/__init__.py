@@ -66,7 +66,8 @@ def masking_map_linear(
 
     # solving model
     if algorithm == "linear_programming":
-        pi = lp(p, q, C, M)
+        # pi = lp(p, q, C, M)
+        pi = lp_partial(p, q, C, M)
     elif algorithm == "sinkhorn":
         pi = sinkhorn_log_domain(p, q, C, M, reg, max_iterations, thres)
     else:
