@@ -1,0 +1,196 @@
+BME: 
+- Train length: 30
+- Test length: 150
+- Shape:
+    -0: (128,)
+    -1: (128,)
+
+BeetleFly: 
+- Train length: 20
+- Test length: 20
+- Shape:
+    -0: (512,)
+    -1: (512,)
+
+BirdChicken: 
+- Train length: 20
+- Test length: 20
+- Shape:
+    -0: (512,)
+    -1: (512,)
+
+Chinatown: 
+- Train length: 20
+- Test length: 343
+- Shape:
+    -0: (24,)
+    -1: (24,)
+
+Coffee: 
+- Train length: 28
+- Test length: 28
+- Shape:
+    -0: (286,)
+    -1: (286,)
+
+DistalPhalanxOutlineCorrect: 
+- Train length: 600
+- Test length: 276
+- Shape:
+    -0: (80,)
+    -1: (80,)
+
+DistalPhalanxTW: 
+- Train length: 400
+- Test length: 139
+- Shape:
+    -0: (80,)
+    -1: (80,)
+
+ECG200: 
+- Train length: 100
+- Test length: 100
+- Shape:
+    -0: (96,)
+    -1: (96,)
+
+FaceFour: 
+- Train length: 24
+- Test length: 88
+- Shape:
+    -0: (350,)
+    -1: (350,)
+
+Fungi: 
+- Train length: 18
+- Test length: 186
+- Shape:
+    -0: (201,)
+    -1: (201,)
+
+GunPoint: 
+- Train length: 50
+- Test length: 150
+- Shape:
+    -0: (150,)
+    -1: (150,)
+
+Herring: 
+- Train length: 64
+- Test length: 64
+- Shape:
+    -0: (512,)
+    -1: (512,)
+
+ItalyPowerDemand: 
+- Train length: 67
+- Test length: 1029
+- Shape:
+    -0: (24,)
+    -1: (24,)
+
+MoteStrain: 
+- Train length: 20
+- Test length: 1252
+- Shape:
+    -0: (84,)
+    -1: (84,)
+
+OliveOil: 
+- Train length: 30
+- Test length: 30
+- Shape:
+    -0: (570,)
+    -1: (570,)
+
+Plane: 
+- Train length: 105
+- Test length: 105
+- Shape:
+    -0: (144,)
+    -1: (144,)
+
+SmoothSubspace: 
+- Train length: 150
+- Test length: 150
+- Shape:
+    -0: (15,)
+    -1: (15,)
+
+SonyAIBORobotSurface1: 
+- Train length: 20
+- Test length: 601
+- Shape:
+    -0: (70,)
+    -1: (70,)
+
+SonyAIBORobotSurface2: 
+- Train length: 27
+- Test length: 953
+- Shape:
+    -0: (65,)
+    -1: (65,)
+
+ToeSegmentation2: 
+- Train length: 36
+- Test length: 130
+- Shape:
+    -0: (343,)
+    -1: (343,)
+
+Colposcopy: 
+- Train length: 99
+- Test length: 101
+- Shape:
+    -0: (180,)
+    -1: (180,)
+
+DistalPhalanxOutlineAgeGroup: 
+- Train length: 400
+- Test length: 139
+- Shape:
+    -0: (80,)
+    -1: (80,)
+
+PowerCons: 
+- Train length: 180
+- Test length: 180
+- Shape:
+    -0: (144,)
+    -1: (144,)
+
+UMD: 
+- Train length: 36
+- Test length: 144
+- Shape:
+    -0: (150,)
+    -1: (150,)
+
+Wine: 
+- Train length: 57
+- Test length: 54
+- Shape:
+    -0: (234,)
+    -1: (234,)
+
+SyntheticControl: 
+- Train length: 300
+- Test length: 300
+- Shape:
+    -0: (60,)
+    -1: (60,)
+
+ProximalPhalanxTW: 
+- Train length: 400
+- Test length: 205
+- Shape:
+    -0: (80,)
+    -1: (80,)
+
+TwoLeadECG: 
+- Train length: 23
+- Test length: 1139
+- Shape:
+    -0: (82,)
+    -1: (82,)
+

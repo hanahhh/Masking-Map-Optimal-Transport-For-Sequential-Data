@@ -2,7 +2,7 @@ from aeon.datasets import load_from_arff_file, load_from_tsfile
 import numpy as np
 
 
-def getData(dataset, path):
+def getData(dataset, path="Data/OneDimension/"):
     if dataset in ["ERing", "EyesOpenShut", "JapaneseVowels"]:
         train_path = f"{path}{dataset}/{dataset}_TRAIN.ts"
         test_path = f"{path}{dataset}/{dataset}_TEST.ts"

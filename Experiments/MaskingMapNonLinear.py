@@ -3,6 +3,7 @@ import json
 import random
 import numpy as np
 from GetData.GetDataMultiDimensions import getDataMultiVariate
+from GetData.GetDataOneDimension import getData
 from MaskingMap.knn import knn_masking_map_non_linear
 
 np.random.seed(42)
@@ -25,7 +26,10 @@ def main(args):
     with open(args.data_path, "r") as file:
         data = json.load(file)
     for data_set in data["MultiDimensional"]:
-        X_train, X_test, y_train, y_test = getDataMultiVariate(data_set)
+        if data_set in ["MSRAction3D", "MSRDailyActivity3D", "Weizmann", "SpokenArabicDigit", "ArabicCut"]:
+            X_train, X_test, y_train, y_test = getDataMultiVariate(data_set)
+        else:
+            X_train, y_train, X_test, y_test = getData(data_set)
         best_accuracy = -100
         for k in algorithms[method]["k"]:
             with open(args.result_path, "a") as file:

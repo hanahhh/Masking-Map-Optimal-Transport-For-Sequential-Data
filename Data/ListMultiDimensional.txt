@@ -1,0 +1,14 @@
+BasicMotions
+ERing
+EyesOpenShut
+FingerMovements
+Epilepsy
+JapaneseVowels
+Libras
+NATOPS
+RacketSports
+MSRAction3D
+MSRDailyActivity3D
+Weizmann
+SpokenArabicDigit
+ArabicCut
