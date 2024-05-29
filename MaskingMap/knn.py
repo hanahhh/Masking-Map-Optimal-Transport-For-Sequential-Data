@@ -9,7 +9,7 @@ from MaskingMap.MaskingMapLinear import (
     masking_map_linear_sub_sequence,
     masking_map_linear_sub_sequence_multivariate
 )
-from MaskingMap.MaskingMapNonLinear import masking_map_non_linear
+from MaskingMap.MaskingMapNonLinear import masking_map_non_linear, auto_weighted_masking_map
 from MaskingMap.MaskingMapAutoWeighted import masking_map_auto_weighted
 import ot
 
@@ -240,5 +240,25 @@ def knn_masking_map_auto_weighted_short(
     )
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    return accuracy
+
+
+def knn_masking_map_auto_weighted_adjusted(X_train, X_test, y_train, y_test, k=1):
+    train_size = len(X_train)
+    test_size = len(X_test)
+    result = np.zeros((test_size, train_size))
+    for train_idx in tqdm(range(train_size)):
+        for test_idx in tqdm(range(test_size), leave=False):
+            distance = auto_weighted_masking_map(
+                np.array(X_train[train_idx]), np.array(X_test[test_idx])
+            )
+            result[test_idx, train_idx] = distance
+
+    y_pred = knn_classifier_from_distance_matrix(
+        distance_matrix=result,
+        k=k,
+        labels=y_train,
+    )
     accuracy = accuracy_score(y_test, y_pred)
     return accuracy
