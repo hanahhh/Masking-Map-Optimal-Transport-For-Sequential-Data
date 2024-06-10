@@ -144,7 +144,7 @@ def subsequenceData(time_series, k):
 def subsequence_2d(matrix_list, k):
     subsequences = [matrix_list[i: i + k]
                     for i in range(0, len(matrix_list) - k)]
-    return subsequences
+    return np.array(subsequences)
 
 
 def subsequence_2d_without_overlap(matrix_list, k):
@@ -191,6 +191,18 @@ def create_mask_KL(xs, xt, sigma=1, type=1):
     #                 M[i][j] = max(f1[i], f2[j])/min(f1[i], f2[j])
     #         else:
     #             M[i][j] = np.abs(f1[i] - f2[j])/mid_para
+    return np.exp(-(np.power(M, 2)) / 2 * np.power(sigma, 2)) / (
+        sigma * np.sqrt(2 * np.pi)
+    )
+
+
+def create_mask_KL_subsequence(xs, xt, sigma=1, type=1):
+    f1 = create_neighbor_relationship_aw(xs)
+    f2 = create_neighbor_relationship_aw(xt)
+    n = len(f1)
+    m = len(f2)
+    mid_para = np.sqrt((1 / (n**2) + 1 / (m**2)))
+    M = np.abs(np.subtract.outer(f1, f2)) / mid_para
     return np.exp(-(np.power(M, 2)) / 2 * np.power(sigma, 2)) / (
         sigma * np.sqrt(2 * np.pi)
     )

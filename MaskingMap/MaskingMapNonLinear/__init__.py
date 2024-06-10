@@ -1,7 +1,7 @@
 import numpy as np
 from MaskingMap.Utilities.linearprog import lp_partial
 from MaskingMap.Utilities.sinkhorn import sinkhorn_log_domain
-from MaskingMap.Utilities.utils import cost_matrix, cost_matrix_1d, create_mask_KL, create_mask_binary
+from MaskingMap.Utilities.utils import cost_matrix, cost_matrix_1d, create_mask_KL, create_mask_binary, subsequence_2d, cost_matrix_aw, create_mask_KL_subsequence
 import matplotlib.pyplot as plt
 import math
 
@@ -155,3 +155,54 @@ def create_mask_non_linear(KL, ratio=0.1, sigma=1, type=1):
             if KL[i][j] > pivot:
                 M[i][j] = 1
     return M
+
+
+def masking_map_non_linear_subsequence(xs, xt, ratio=0.1, eps=1e-10, reg=0.0001, max_iterations=100000, thres=1e-5, algorithm="linear_programming", plot=False, sub_ratio=0.1):
+    '''
+    Parameters
+    ----------
+        a: ndarray, (m,d)
+           d-dimensional source samples
+        b: ndarray, (n,d) 
+           d-dimensional target samples
+        lamb: lambda, int 
+           Adjust the diagonal width. Default is 3
+        sub_length: int
+                    The number of elements of sub-sequence. Default is 25
+        algorithm: str
+                   algorithm to solve model. Default is "linear_programming". Choices should be
+                   "linear_programming" and "sinkhorn"
+        plot: bool
+              status for plot the optimal transport matrix or not. Default is "False"
+    Returns
+    ------- 
+        cost: Transportation cost
+    '''
+    sub_length = int(np.floor(min(len(xs), len(xt)) * sub_ratio))
+    subs_xs = subsequence_2d(xs, sub_length)
+    subs_xt = subsequence_2d(xt, sub_length)
+    p = np.ones(len(subs_xs)) / len(subs_xs)
+    q = np.ones(len(subs_xt)) / len(subs_xt)
+
+    # mask matrix
+    C = cost_matrix_aw(subs_xs, subs_xt)
+    C /= C.max() + eps
+    KL = create_mask_KL_subsequence(subs_xs, subs_xt, type=2)
+    M_hat = create_mask_binary(KL, ratio)
+    # solving model
+    if algorithm == "linear_programming":
+        pi = lp_partial(p, q, C, M_hat)
+    elif algorithm == "sinkhorn":
+        pi = sinkhorn_log_domain(
+            p, q, C, M_hat, reg, max_iterations, thres)
+    else:
+        raise ValueError(
+            "algorithm must be 'linear_programming' or 'sinkhorn'!")
+
+    cost = np.sum(pi * C)
+    if plot:
+        plt.imshow(pi, cmap='viridis')
+        plt.colorbar()
+        plt.show()
+        return pi, cost
+    return cost

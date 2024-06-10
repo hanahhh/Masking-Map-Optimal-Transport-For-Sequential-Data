@@ -9,7 +9,7 @@ from MaskingMap.MaskingMapLinear import (
     masking_map_linear_sub_sequence,
     masking_map_linear_sub_sequence_multivariate
 )
-from MaskingMap.MaskingMapNonLinear import masking_map_non_linear, auto_weighted_masking_map
+from MaskingMap.MaskingMapNonLinear import masking_map_non_linear, auto_weighted_masking_map, masking_map_non_linear_subsequence
 from MaskingMap.MaskingMapAutoWeighted import masking_map_auto_weighted
 import ot
 
@@ -260,5 +260,38 @@ def knn_masking_map_auto_weighted_adjusted(X_train, X_test, y_train, y_test, k=1
         k=k,
         labels=y_train,
     )
+    accuracy = accuracy_score(y_test, y_pred)
+    return accuracy
+
+
+def knn_masking_map_non_linear_subsequence(X_train, X_test, y_train, y_test, ratio=0.1, sub_ratio=0.1, k=1):
+    train_size = len(X_train)
+    test_size = len(X_test)
+    result = np.zeros((test_size, train_size))
+    for train_idx in tqdm(range(train_size)):
+        for test_idx in tqdm(range(test_size), leave=False):
+            distance = masking_map_non_linear_subsequence(
+                np.array(X_train[train_idx]), np.array(X_test[test_idx]), ratio=ratio, sub_ratio=sub_ratio
+            )
+            result[test_idx, train_idx] = distance
+
+    y_pred = knn_classifier_from_distance_matrix(
+        distance_matrix=result,
+        k=k,
+        labels=y_train,
+    )
+    accuracy = accuracy_score(y_test, y_pred)
+    return accuracy
+
+
+def knn_masking_map_non_linear_subsequence_short(X_train, X_test, y_train, y_test, ratio=0.1, sub_ratio=0.1, k=1):
+    clf = KNeighborsClassifier(
+        n_neighbors=k,
+        metric=masking_map_non_linear_subsequence,
+        metric_params={"ratio": ratio, "sub_ratio": sub_ratio},
+        n_jobs=-1,
+    )
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     return accuracy

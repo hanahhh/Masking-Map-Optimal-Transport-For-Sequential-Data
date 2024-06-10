@@ -205,7 +205,7 @@ def masking_map_linear_sequence(
 def masking_map_linear_partial(
     xs,
     xt,
-    lamb=5,
+    ratio=0.1,
     s=0.5,
     xi=None,
     A=None,
@@ -240,14 +240,10 @@ def masking_map_linear_partial(
     """
     p = torch.Tensor(np.ones(len(xs)) / len(xs))
     q = torch.Tensor(np.ones(len(xt)) / len(xt))
-    if xs.ndim == 1:
-        C = cost_matrix_1d(xs, xt)
-    elif xs.ndim == 2:
-        C = cost_matrix(xs, xt)
-    else:
-        raise ValueError("The data must in the form of 1d or 2d array")
+    C = cost_matrix_aw(xs, xt, subsequence=False)
     C /= C.max() + eps
-    M = torch.Tensor(create_mask(C, lamb))
+    C = torch.Tensor(C)
+    M = torch.Tensor(create_mask(C, ratio=ratio))
 
     # partial cost matrix
     if A is None:
@@ -269,11 +265,12 @@ def masking_map_linear_partial(
     M_ = torch.cat((M_, b.t()), dim=0)
     pot = M_.shape[1]
     n, m = M_.shape
+    lamb = int(ratio * min(n, m))
     for i in range(n - lamb * 2, n):
         if (i > pot * n / m - lamb) & (i < pot * n / m + lamb):
             M_[i][pot - 1] = 1
 
-    pi_ = lp_partial(p=p_.numpy(), q=q_.numpy(), C=C_.numpy(), Mask=M_.numpy())
+    pi_ = lp(p_.numpy(), q_.numpy(), C_.numpy(), M_.numpy())
     cost = np.sum(pi_ * C_.numpy())
     if plot:
         sns.heatmap(pi_, linewidth=0.5)
