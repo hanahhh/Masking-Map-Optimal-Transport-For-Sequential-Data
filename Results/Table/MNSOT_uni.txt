@@ -1,0 +1,30 @@
+{|l|c|c|c|c|c|c|}\hline
+&DTW &OPW &TCOT &WTK &AWSWD &MNSOT \\\hline
+BME & 0.893& \underline{\textit{0.853}}& 0.587& 0.720& 0.947& \textbf{1.000}\\\hline
+BeetleFly & 0.700& \textbf{1.000}& \textbf{1.000}& 0.800& \textbf{1.000}& \underline{\textit{0.850}}\\\hline
+BirdChicken & 0.750& 0.600& 0.850& \textbf{0.950}& 0.850& \underline{\textit{0.900}}\\\hline
+Chinatown & \textbf{0.974}& 0.942& 0.324& 0.950& 0.726& \underline{\textit{0.971}}\\\hline
+Coffee & \textbf{1.000}& \textbf{1.000}& \underline{\textit{0.857}}& \textbf{1.000}& \textbf{1.000}& \textbf{1.000}\\\hline
+DistalPhalanxOutlineCorrect & 0.757& 0.686& 0.671& 0.761& \underline{\textit{0.743}}& \textbf{0.768}\\\hline
+DistalPhalanxTW & \textbf{0.744}& \underline{\textit{0.733}}& \textbf{0.744}& 0.662& \textbf{0.744}& 0.655\\\hline
+ECG200 & 0.800& 0.900& \underline{\textit{0.840}}& \textbf{0.910}& \textbf{0.910}& \textbf{0.910}\\\hline
+FaceFour & 0.767& 0.800& 0.633& \textbf{0.932}& 0.800& \underline{\textit{0.920}}\\\hline
+Fungi & 0.796& 0.833& 0.000& \textbf{0.989}& 0.000& \underline{\textit{0.973}}\\\hline
+GunPoint & 0.907& 0.913& 0.833& 0.980& \textbf{0.987}& \underline{\textit{0.987}}\\\hline
+Herring & \underline{\textit{0.550}}& 0.650& \underline{\textit{0.550}}& 0.688& 0.500& \textbf{0.719}\\\hline
+ItalyPowerDemand & 0.950& 0.956& 0.836& 0.958& \underline{\textit{0.955}}& \textbf{0.965}\\\hline
+MoteStrain & 0.835& 0.784& 0.797& 0.875& \textbf{0.903}& \underline{\textit{0.859}}\\\hline
+OliveOil & 0.867& \textbf{0.900}& \underline{\textit{0.600}}& \textbf{0.900}& \textbf{0.900}& \textbf{0.900}\\\hline
+Plane & \textbf{1.000}& \underline{\textit{0.962}}& \textbf{1.000}& \textbf{1.000}& \textbf{1.000}& \textbf{1.000}\\\hline
+SmoothSubspace & 0.860& 0.987& 0.940& \underline{\textit{0.980}}& 0.907& \textbf{0.993}\\\hline
+SonyAIBORobotSurface1 & 0.726& 0.772& \underline{\textit{0.750}}& \textbf{0.794}& 0.719& 0.705\\\hline
+SonyAIBORobotSurface2 & 0.831& 0.858& 0.766& \textbf{0.922}& \underline{\textit{0.872}}& 0.859\\\hline
+ToeSegmentation2 & \underline{\textit{0.852}}& 0.815& 0.741& \textbf{0.931}& \underline{\textit{0.852}}& \textbf{0.931}\\\hline
+Colposcopy & \textbf{0.406}& \underline{\textit{0.366}}& 0.188& 0.327& 0.257& 0.337\\\hline
+DistalPhalanxOutlineAgeGroup & 0.750& 0.730& 0.730& \underline{\textit{0.741}}& \textbf{0.760}& 0.727\\\hline
+PowerCons & 0.833& 0.967& 0.867& \textbf{0.978}& 0.933& \underline{\textit{0.961}}\\\hline
+UMD & 0.882& 0.611& 0.806& 0.931& \underline{\textit{0.917}}& \textbf{0.986}\\\hline
+Wine & \underline{\textit{0.574}}& 0.611& \underline{\textit{0.574}}& \textbf{0.704}& 0.537& \textbf{0.704}\\\hline
+SyntheticControl & \textbf{0.990}& 0.910& 0.560& \underline{\textit{0.987}}& 0.830& 0.917\\\hline
+ProximalPhalanxTW & 0.780& 0.780& 0.770& 0.795& \textbf{0.810}& \underline{\textit{0.790}}\\\hline
+TwoLeadECG & 0.904& 0.759& 0.930& 0.975& \textbf{0.985}& \underline{\textit{0.976}}\\\hline

@@ -1,31 +1,12 @@
 import numpy as np
-import torch
-import math
 import seaborn as sns
-from MaskingMap.Utilities.linearprog import lp, lp_partial, lp_sci, lp_aw
-from MaskingMap.Utilities.sinkhorn import (
-    sinkhorn_log_domain,
-    sinkhorn_log_domain_torch,
-    sinkhorn_log_domain_aw,
-)
-from MaskingMap.Utilities.utils import (
-    cost_matrix,
-    cost_matrix_1d,
-    create_mask,
-    subsequences,
-    subsequenceData,
-    subsequence_2d,
-    cost_matrix_2d,
-    create_mask_DT,
-    create_mask_KL,
-    create_I,
-    create_mask_binary,
-    cost_matrix_aw,
-    create_mask_linear_aw,
-    create_mask_non_linear_aw,
-)
-from ot.lp import emd_1d_sorted
-import matplotlib.pyplot as plt
+import torch
+
+from MaskingMap.Utilities.linearprog import lp, lp_aw, lp_partial
+from MaskingMap.Utilities.sinkhorn import sinkhorn_log_domain
+from MaskingMap.Utilities.utils import (cost_matrix, cost_matrix_aw,
+                                        create_mask, subsequenceData,
+                                        subsequences)
 
 
 def masking_map_linear(

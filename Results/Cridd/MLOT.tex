@@ -1,0 +1,45 @@
+\begin{tikzpicture}[
+  treatment line/.style={rounded corners=1.5pt, line cap=round, shorten >=1pt},
+  treatment label/.style={font=\small},
+  group line/.style={ultra thick},
+]
+
+\begin{axis}[
+  clip={false},
+  axis x line={center},
+  axis y line={none},
+  axis line style={-},
+  xmin={1},
+  ymax={0},
+  scale only axis={true},
+  width={\axisdefaultwidth},
+  ticklabel style={anchor=south, yshift=1.3*\pgfkeysvalueof{/pgfplots/major tick length}, font=\small},
+  every tick/.style={draw=black},
+  major tick style={yshift=.5*\pgfkeysvalueof{/pgfplots/major tick length}},
+  minor tick style={yshift=.5*\pgfkeysvalueof{/pgfplots/minor tick length}},
+  title style={yshift=\baselineskip},
+  xmax={6},
+  ymin={-4.5},
+  height={5\baselineskip},
+  xtick={1,2,3,4,5,6},
+  minor x tick num={3},
+  x dir={reverse},
+  title={MOT},
+]
+
+\draw[treatment line] ([yshift=-2pt] axis cs:2.4722222222222223, 0) |- (axis cs:1.9722222222222223, -2.0)
+  node[treatment label, anchor=west] {WTK};
+\draw[treatment line] ([yshift=-2pt] axis cs:3.0972222222222223, 0) |- (axis cs:1.9722222222222223, -3.0)
+  node[treatment label, anchor=west] {MLOT};
+\draw[treatment line] ([yshift=-2pt] axis cs:3.236111111111111, 0) |- (axis cs:1.9722222222222223, -4.0)
+  node[treatment label, anchor=west] {AWSWD};
+\draw[treatment line] ([yshift=-2pt] axis cs:3.5833333333333335, 0) |- (axis cs:5.416666666666667, -4.0)
+  node[treatment label, anchor=east] {DTW};
+\draw[treatment line] ([yshift=-2pt] axis cs:3.6944444444444446, 0) |- (axis cs:5.416666666666667, -3.0)
+  node[treatment label, anchor=east] {OPW};
+\draw[treatment line] ([yshift=-2pt] axis cs:4.916666666666667, 0) |- (axis cs:5.416666666666667, -2.0)
+  node[treatment label, anchor=east] {TCOT};
+\draw[group line] (axis cs:2.4722222222222223, -1.3333333333333333) -- (axis cs:3.6944444444444446, -1.3333333333333333);
+
+\end{axis}
+\end{tikzpicture}

@@ -1,10 +1,11 @@
-import torch
-import numpy as np
-import scipy.io as sio
 import math
-import ot
+
 import matplotlib.pyplot as plt
+import numpy as np
+import ot
+import scipy.io as sio
 import seaborn as sns
+import torch
 
 
 def checkEven(x, y):

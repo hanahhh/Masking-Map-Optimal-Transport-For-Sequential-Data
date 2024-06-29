@@ -1,5 +1,5 @@
-import numpy as np
 import cvxpy as cvx
+import numpy as np
 import scipy.optimize._linprog as linprog
 import scipy.sparse as sps
 

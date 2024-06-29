@@ -1,9 +1,15 @@
+import math
+
+import matplotlib.pyplot as plt
 import numpy as np
+
 from MaskingMap.Utilities.linearprog import lp_partial
 from MaskingMap.Utilities.sinkhorn import sinkhorn_log_domain
-from MaskingMap.Utilities.utils import cost_matrix, cost_matrix_1d, create_mask_KL, create_mask_binary, subsequence_2d, cost_matrix_aw, create_mask_KL_subsequence
-import matplotlib.pyplot as plt
-import math
+from MaskingMap.Utilities.utils import (cost_matrix, cost_matrix_1d,
+                                        cost_matrix_aw, create_mask_binary,
+                                        create_mask_KL,
+                                        create_mask_KL_subsequence,
+                                        subsequence_2d)
 
 
 def masking_map_non_linear(xs, xt, ratio=0.1, eps=1e-10, reg=0.0001, max_iterations=100000, thres=1e-5, algorithm="linear_programming", plot=False):

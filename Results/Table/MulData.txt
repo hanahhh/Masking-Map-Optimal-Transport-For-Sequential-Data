@@ -1,0 +1,9 @@
+{|l|c|c|c|c|}\hline
+\multicolumn{1}{|c|}{Dataset} & Alter Name & Shape & Train & Test\\\hline
+BasicMotions &BM &(6, 100) &40 &40\\\hline
+ERing &ERing &(4, 65) &30 &270\\\hline
+EyesOpenShut &EOS &(14, 128) &56 &42\\\hline
+FingerMovements &FM &(28, 50) &316 &100\\\hline
+Epilepsy &Epilepsy &(3, 206) &137 &138\\\hline
+NATOPS &NATOPS &(24, 51) &180 &180\\\hline
+RacketSports &RS &(6, 30) &151 &152\\\hline

@@ -167,7 +167,7 @@ Datasets/UCR
 Datasets/wei_dataset_feature
 Datasets/arabic
 Datasets/COIN
-
+Data/*
 ot_dis.egg-info
 Data/MultiDimensions
 Data/OneDimension

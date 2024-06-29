@@ -1,0 +1,30 @@
+{|l|c|c|c|c|}\hline
+\multicolumn{1}{|c|}{Dataset} & Alter Name & Shape & Train & Test\\\hline
+BME &BME &(128,) &30 &150\\\hline
+BeetleFly &BeetleFly &(512,) &20 &20\\\hline
+BirdChicken &BChicken &(512,) &20 &20\\\hline
+Chinatown &Chinatown &(24,) &20 &343\\\hline
+Coffee &Coffee &(286,) &28 &28\\\hline
+DistalPhalanxOutlineCorrect &DPOC &(80,) &600 &276\\\hline
+DistalPhalanxTW &DPTW &(80,) &400 &139\\\hline
+ECG200 &ECG200 &(96,) &100 &100\\\hline
+FaceFour &FaceFour &(350,) &24 &88\\\hline
+Fungi &Fungi &(201,) &18 &186\\\hline
+GunPoint &GunPoint &(150,) &50 &150\\\hline
+Herring &Herring &(512,) &64 &64\\\hline
+ItalyPowerDemand &ItalyPower &(24,) &67 &1029\\\hline
+MoteStrain &MoteStrain &(84,) &20 &1252\\\hline
+OliveOil &OliveOil &(570,) &30 &30\\\hline
+Plane &Plane &(144,) &105 &105\\\hline
+SmoothSubspace &SS &(15,) &150 &150\\\hline
+SonyAIBORobotSurface1 &SAIBORS1 &(70,) &20 &601\\\hline
+SonyAIBORobotSurface2 &SAIBORS2 &(65,) &27 &953\\\hline
+ToeSegmentation2 &ToeSegment &(343,) &36 &130\\\hline
+Colposcopy &Colposcopy &(180,) &99 &101\\\hline
+DistalPhalanxOutlineAgeGroup &DPOA &(80,) &400 &139\\\hline
+PowerCons &PowerCons &(144,) &180 &180\\\hline
+UMD &UMD &(150,) &36 &144\\\hline
+Wine &Wine &(234,) &57 &54\\\hline
+SyntheticControl &SControl &(60,) &300 &300\\\hline
+ProximalPhalanxTW &PPTW &(80,) &400 &205\\\hline
+TwoLeadECG &2LeadECG &(82,) &23 &1139\\\hline

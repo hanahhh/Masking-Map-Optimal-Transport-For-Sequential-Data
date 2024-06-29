@@ -1,5 +1,5 @@
-import torch
 import numpy as np
+import torch
 
 
 def sinkhorn_log_domain_torch(p, q, C, Mask=None, reg=0.01, niter=2000, thresh=1e-3):

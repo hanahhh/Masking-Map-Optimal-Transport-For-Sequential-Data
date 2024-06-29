@@ -1,0 +1,12 @@
+{|l|c|c|c|c|c|c|}\hline
+&DTW &OPW &TCOT &WTK &AWSWD &MNSOT \\\hline
+BasicMotions & \textbf{0.975}& 0.750& 0.075& 0.575& 0.250& \underline{\textit{0.850}}\\\hline
+ERing & 0.933& \underline{\textit{0.922}}& 0.907& 0.933& \textbf{0.941}& 0.907\\\hline
+EyesOpenShut & 0.476& 0.548& \underline{\textit{0.500}}& 0.571& \underline{\textit{0.500}}& \textbf{0.595}\\\hline
+FingerMovements & 0.570& 0.570& 0.490& \textbf{0.640}& 0.490& \underline{\textit{0.630}}\\\hline
+Epilepsy & 0.783& \underline{\textit{0.761}}& 0.804& 0.616& \textbf{0.913}& 0.638\\\hline
+NATOPS & 0.883& 0.850& 0.822& 0.844& \textbf{0.889}& \underline{\textit{0.856}}\\\hline
+RacketSports & \textbf{0.829}& 0.743& 0.158& \underline{\textit{0.822}}& 0.283& 0.816\\\hline
+MSR Sports Action 3D & \textbf{0.704}& 0.633& 0.532& 0.539& 0.556& \underline{\textit{0.670}}\\\hline
+MSR Daily Activity 3D & 0.456& \textbf{0.463}& 0.319& 0.338& \underline{\textit{0.356}}& 0.331\\\hline
+SpokenArabicDigit & \textbf{0.972}& \underline{\textit{0.927}}& 0.482& 0.536& 0.600& 0.918\\\hline
