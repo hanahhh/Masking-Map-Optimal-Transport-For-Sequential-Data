@@ -12,7 +12,7 @@ def getData(dataset, path="Data/"):
             train_path, test_path, is_ts_file=True)
         return X_train, y_train, X_test, y_test
     elif dataset in ["MSRAction3D", "MSRDailyActivity3D", "Weizmann", "SpokenArabicDigit", "ArabicCut"]:
-        dir_name = os.path.dirname(data_path)
+        dir_name = os.path.dirname(path)
         X_train = joblib.load(os.path.join(dir_name, f"{dataset}/X_train.pkl"))
         y_train = joblib.load(os.path.join(dir_name, f"{dataset}/y_train.pkl"))
         X_test = joblib.load(os.path.join(dir_name, f"{dataset}/X_test.pkl"))
